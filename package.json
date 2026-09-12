@@ -1,1 +1,31 @@
-{"name":"imchess","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"dependencies":{"chess.js":"^1.4.0","vite":"^7.1.2"}}
+{
+  "name": "imchess",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "desktop:dev": "electron electron/main.cjs",
+    "desktop:build": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "chess.js": "^1.4.0",
+    "vite": "^7.1.2"
+  },
+  "devDependencies": {
+    "electron": "^38.1.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.imchess.app",
+    "productName": "IMchess",
+    "files": ["dist/**/*", "electron/**/*", "package.json"],
+    "directories": { "output": "release" },
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" },
+    "linux": { "target": "AppImage" }
+  }
+}
